@@ -1,9 +1,10 @@
 import NextNprogress from 'nextjs-progressbar'
-import '../styles/main.scss'
+import GlobalStyle from '../styles/global'
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
+      <GlobalStyle />
       <NextNprogress/>
       <Component {...pageProps} />
     </>

@@ -41,7 +41,7 @@ export default function Post({ post: serverPost }: PostPageProps) {
      <h1>{post.title}</h1>
       <hr />
       <p>{post.body}</p>
-      <Link href={'/posts'}><a>Back to all posts</a></Link>
+      <Link href={'/'}><a>Back to all posts</a></Link>
     </MainLayout>
   )
 }
