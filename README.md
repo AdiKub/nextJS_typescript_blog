@@ -52,9 +52,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Test_NextJs+TypeScript project uses a number of open source libraries to work properly:
 
+* [Next.js] - Next.js - это интерфейсная веб-среда разработки React с открытым исходным кодом, созданная Vercel, которая обеспечивает такие функции, как рендеринг на стороне сервера и создание статических веб-сайтов для веб-приложений на основе React.
 * [axios] - Axios is a simple promise based HTTP client for the browser and node.js. Axios provides a simple to use library in a small package with a very extensible interface.
 * [dotenv] - Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
+* [sass] - Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
 * [styled-components] - Styled components are a CSS-in-JS tool that bridges the gap between components and styling, offering numerous features to get you up and running in styling components in a functional and reusable way. 
+* [nextjs-progressbar] - A nextjs primitive for building slim progress bars.. 
 
 # Attention 
 
