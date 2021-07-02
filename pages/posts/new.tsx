@@ -19,7 +19,7 @@ import postsApi from '../api/postsApi'
  const newPost = () => {
   const [post, setPost] = useState({})
    
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (event): void => {
     const newPost = Object.assign(post, {[event.target.name]: event.target.value})
     setPost(newPost)
   }
@@ -50,16 +50,16 @@ import postsApi from '../api/postsApi'
           name='title'
           className='backColor' 
           onChange={changeHandler}
-        >
-        </Input>
+        />
       </ImputWrapper>
       <ImputWrapper className='mb-1'> 
         <BoxTitle>Discription</BoxTitle>
         <InputArea
           name='body' 
-          onChange={changeHandler}></InputArea>
+          onChange={changeHandler}
+        />
       </ImputWrapper>
-      <Button className='mb-4' onClick={submitHandler}>CREATE</Button>
+      <Button primary={false} className='mb-4' onClick={submitHandler}>CREATE</Button>
       <Button 
         onClick={() => Router.push('/')} 
         primary

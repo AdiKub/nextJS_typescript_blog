@@ -9,16 +9,12 @@ import {
   Button,
   ListItem
 } from '../styles/styles';
-
 import {MyPost} from '../interfaces/post'
 import postsApi from './api/postsApi'
 import {MainLayout} from '../components/MainLayout'
-
-
 interface PostsPageProps {
   posts: MyPost[]
 }
-
 export default function Index({ posts: serverPosts }: PostsPageProps) {
   const [posts, setPosts] = useState(serverPosts)
 
@@ -56,14 +52,14 @@ export default function Index({ posts: serverPosts }: PostsPageProps) {
             as={`/posts/${post.id}`}
           >
             <ListItem key={post.id}>
-                {post.title}
+              {post.title}
             </ListItem>
           </Link>
         ))}
       </ul>
       <Button 
+        primary={true}
         onClick={() => Router.push('/posts/new')} 
-        primary
       >
       CREAT NEW POST
       </Button>
@@ -78,7 +74,6 @@ Index.getInitialProps = async ({req}: NextPageContext) => {
   }
 
   const posts: MyPost[] = (await postsApi.getPosts()).data
-
   return {
     posts
   }

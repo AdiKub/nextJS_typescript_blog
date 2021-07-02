@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ButtonProps {
+  readonly primary: boolean;
+};
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,7 +44,7 @@ export const BoxTitle = styled.span`
   font-weight: 600;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
  
   background: ${props => props.primary ? "#424242" : "white"};
   color: ${props => props.primary ? "white" : '#424242'};

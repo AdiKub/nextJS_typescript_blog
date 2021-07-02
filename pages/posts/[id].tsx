@@ -51,7 +51,7 @@ export default function Post({ post: serverPost }: PostPageProps) {
         <DescriptionBox>{post.body}</DescriptionBox>
         <Button 
           onClick={() => Router.push('/')} 
-          primary
+          primary={true}
         >
           BACK TO LIST
       </Button>
