@@ -11,7 +11,7 @@ export function MainLayout({ children, title = 'Next App' }) {
         <meta charSet="utf-8" />
       </Head>
       <nav>
-        <Link href={'/posts'}><a>Posts</a></Link>
+        <Link href={'/'}><a>Posts</a></Link>
         <Link href={'/posts/new'}><a>New Post</a></Link>
       </nav>
       <main>
@@ -24,7 +24,7 @@ export function MainLayout({ children, title = 'Next App' }) {
           left: 0;
           top: 0;
           right: 0;
-          background: gray;
+          background: #252525;
           display: flex;
           justify-content: flex-end;
           padding-right: 50px;

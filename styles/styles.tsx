@@ -52,3 +52,18 @@ export const Button = styled.button`
   border: 2px solid #424242;
   border-radius: 3px;
 `;
+
+export const ListItem = styled.li`
+  color: black;
+  background-color: #d8d8d8;
+  width: 300px;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  
+  &:hover  {
+    cursor: pointer;
+    color: #e6e6e6;
+    background-color: #333333;
+  }
+  
+`;

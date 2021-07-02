@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import Head from 'next/head'
+import Link from 'next/link'
+import Router from 'next/router'
 
 import { 
   Container,
@@ -9,33 +10,56 @@ import {
   ImputWrapper,
   BoxTitle,
   InputArea 
-} from './styles';
+} from '../../../styles/styles';
 
 import {MainLayout} from '../../../components/MainLayout'
-import Link from 'next/link'
-import {MyPost} from '../../../interfaces/post'
-
-interface PostsPageProps {
-  posts: MyPost[]
-}
+import postsApi from '../../api/postsApi'
 
 
- const newPost = ({ posts: serverPosts }: PostsPageProps) => {
+ const newPost = () => {
+  const [post, setPost] = useState({})
+   
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newPost = Object.assign(post, {[event.target.name]: event.target.value})
+    setPost(newPost)
+  }
 
-  const [posts, setPosts] = useState(serverPosts)
+  const submitHandler = () => {
+  if (post['title'] && post['body'])
+    PostSetter(post)
+  }
+
+  const PostSetter = async(post)=> {
+
+    await postsApi.setPost(post)
+    .then(response => {
+      Router.push('/')
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   return (
     <MainLayout>
       <Container >
       <Title className='mb-4'>New post</Title>
       <ImputWrapper className='mb-1'> 
         <BoxTitle>Title</BoxTitle>
-        <Input className='backColor'></Input>
+        <Input
+          name='title'
+          className='backColor' 
+          onChange={changeHandler}
+        >
+        </Input>
       </ImputWrapper>
       <ImputWrapper className='mb-1'> 
         <BoxTitle>Discription</BoxTitle>
-        <InputArea ></InputArea>
+        <InputArea
+          name='body' 
+          onChange={changeHandler}></InputArea>
       </ImputWrapper>
-      <Button className='mb-4'>CREATE</Button>
+      <Button className='mb-4' onClick={submitHandler}>CREATE</Button>
       <Link href={'/'}><Button primary>BACK TO LIST</Button></Link>
       </Container>
     </MainLayout>

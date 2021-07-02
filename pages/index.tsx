@@ -1,12 +1,19 @@
 import {useState, useEffect} from 'react'
 import {NextPageContext} from 'next'
 import Link from 'next/link'
-import styled from 'styled-components'
 import Router from 'next/router'
+
+import { 
+  Container,
+  Title,
+  Button,
+  ListItem
+} from '../styles/styles';
 
 import {MyPost} from '../interfaces/post'
 import postsApi from './api/postsApi'
 import {MainLayout} from '../components/MainLayout'
+
 
 interface PostsPageProps {
   posts: MyPost[]
@@ -15,14 +22,14 @@ interface PostsPageProps {
 export default function Index({ posts: serverPosts }: PostsPageProps) {
   const [posts, setPosts] = useState(serverPosts)
 
-  useEffect(() => {
-    async function load() {
+  const load = async()=> {
+    await postsApi.getPosts()
+    .then(response => {
+      setPosts(response.data)
+    })
+  }
 
-      await postsApi.getPosts()
-      .then(response => {
-        setPosts(response.data)
-      })
-    }
+  useEffect(() => {
 
     if (!serverPosts) {
       load()
@@ -31,25 +38,35 @@ export default function Index({ posts: serverPosts }: PostsPageProps) {
 
   if (!posts) {
     return <MainLayout>
+      <Container>
       <p>Loading ...</p>
+      </Container>
     </MainLayout>
   }
 
   return (
     <MainLayout>
-      <h1>POSTS LIST</h1>
+      <Container>
+      <Title className='mb-4'>POSTS LIST</Title>
       <ul>
         {posts.map(post => (
-          <li key={post.id}>
-            <Link href={`/posts/[id]`} as={`/posts/${post.id}`}>
-              <a>{post.title}</a>
-            </Link>
-          </li>
+          <Link 
+            href={`/posts/[id]`} 
+            as={`/posts/${post.id}`}
+          >
+            <ListItem key={post.id}>
+                {post.title}
+            </ListItem>
+          </Link>
         ))}
       </ul>
-      <button onClick={() => Router.push('/posts/new')}>
+      <Button 
+        onClick={() => Router.push('/posts/new')} 
+        primary
+      >
       CREAT NEW POST
-      </button>
+      </Button>
+      </Container>
     </MainLayout>
   )
 }

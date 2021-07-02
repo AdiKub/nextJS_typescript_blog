@@ -3,6 +3,11 @@ import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {NextPageContext} from 'next'
 
+import { 
+  Container,
+  
+} from '../../styles/styles';
+
 import {MainLayout} from '../../components/MainLayout'
 import {MyPost} from '../../interfaces/post'
 import postsApi from '../api/postsApi'
@@ -32,7 +37,9 @@ export default function Post({ post: serverPost }: PostPageProps) {
 
   if (!post) {
     return <MainLayout>
+      <Container>
       <p>Loading ...</p>
+      </Container>
     </MainLayout>
   }
   return(
