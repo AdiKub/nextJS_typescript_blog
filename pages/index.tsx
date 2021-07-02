@@ -50,7 +50,8 @@ export default function Index({ posts: serverPosts }: PostsPageProps) {
       <Title className='mb-4'>POSTS LIST</Title>
       <ul>
         {posts.map(post => (
-          <Link 
+          <Link
+            key={post.id} 
             href={`/posts/[id]`} 
             as={`/posts/${post.id}`}
           >

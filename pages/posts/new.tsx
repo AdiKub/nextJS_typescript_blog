@@ -10,10 +10,10 @@ import {
   ImputWrapper,
   BoxTitle,
   InputArea 
-} from '../../../styles/styles';
+} from '../../styles/styles';
 
-import {MainLayout} from '../../../components/MainLayout'
-import postsApi from '../../api/postsApi'
+import {MainLayout} from '../../components/MainLayout'
+import postsApi from '../api/postsApi'
 
 
  const newPost = () => {

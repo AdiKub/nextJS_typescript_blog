@@ -13,7 +13,7 @@ export const Input = styled.input`
   display: flex;
   justify-content: flex-end;
   border: none;
-  background-color: #ECECEC;
+  background-color: #e0e0e0;
   width: 400px;
   padding: 5px 10px;
 `;
@@ -25,7 +25,7 @@ export const InputArea = styled.textarea`
   border: none;
   width: 400px;
   height: 200px;
-  background-color: #ECECEC;
+  background-color: #e0e0e0;
   padding: 5px 10px;
   resize: none;
 `;
