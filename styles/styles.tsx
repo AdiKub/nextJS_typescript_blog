@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: center;
 `;
 export const Title = styled.h1`
-  margin-left: 30px;
   font-size: 1.3em;
 `;
 
@@ -51,13 +50,16 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid #424242;
   border-radius: 3px;
+  &:hover  {
+    cursor: pointer;
+  }
 `;
 
 export const ListItem = styled.li`
   color: black;
   background-color: #d8d8d8;
-  width: 300px;
-  padding: 5px 5px;
+  width: 400px;
+  padding: 5px 15px;
   margin-bottom: 10px;
   
   &:hover  {
@@ -65,5 +67,16 @@ export const ListItem = styled.li`
     color: #e6e6e6;
     background-color: #333333;
   }
+  
+`;
+
+
+export const DescriptionBox = styled.p`
+  color: black;
+  background-color: #d8d8d8;
+  width: 600px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  
   
 `;

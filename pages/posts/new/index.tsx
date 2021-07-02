@@ -60,7 +60,12 @@ import postsApi from '../../api/postsApi'
           onChange={changeHandler}></InputArea>
       </ImputWrapper>
       <Button className='mb-4' onClick={submitHandler}>CREATE</Button>
-      <Link href={'/'}><Button primary>BACK TO LIST</Button></Link>
+      <Button 
+        onClick={() => Router.push('/')} 
+        primary
+      >
+        BACK TO LIST
+      </Button>
       </Container>
     </MainLayout>
   )

@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react'
-import Link from 'next/link'
+import Router from 'next/router'
 import {useRouter} from 'next/router'
 import {NextPageContext} from 'next'
 
 import { 
   Container,
-  
+  DescriptionBox,
+  Title,
+  Button
 } from '../../styles/styles';
 
 import {MainLayout} from '../../components/MainLayout'
@@ -44,11 +46,16 @@ export default function Post({ post: serverPost }: PostPageProps) {
   }
   return(
     <MainLayout>
-      
-     <h1>{post.title}</h1>
-      <hr />
-      <p>{post.body}</p>
-      <Link href={'/'}><a>Back to all posts</a></Link>
+      <Container>
+        <Title className='mb-4'>{post.title}</Title>
+        <DescriptionBox>{post.body}</DescriptionBox>
+        <Button 
+          onClick={() => Router.push('/')} 
+          primary
+        >
+          BACK TO LIST
+      </Button>
+      </Container>
     </MainLayout>
   )
 }
