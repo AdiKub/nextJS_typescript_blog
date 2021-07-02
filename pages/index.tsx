@@ -1,41 +1,42 @@
-import {useState, useEffect} from 'react'
-import {NextPageContext} from 'next'
+import { useState, useEffect } from 'react'
+import { NextPageContext } from 'next'
 import Link from 'next/link'
 import Router from 'next/router'
 
-import { 
+import {
   Container,
   Title,
   Button,
   ListItem
 } from '../styles/styles';
-import {MyPost} from '../interfaces/post'
+
+import { MyPost } from '../interfaces/post'
 import postsApi from './api/postsApi'
-import {MainLayout} from '../components/MainLayout'
+import { MainLayout } from '../components/MainLayout'
 interface PostsPageProps {
   posts: MyPost[]
 }
-export default function Index({ posts: serverPosts }: PostsPageProps) {
-  const [posts, setPosts] = useState(serverPosts)
 
-  const load = async()=> {
+const Index = ({ posts: serverPosts }: PostsPageProps) => {
+  const [postsState, setPosts] = useState(serverPosts)
+
+  const load = async () => {
     await postsApi.getPosts()
-    .then(response => {
-      setPosts(response.data)
-    })
+      .then(response => {
+        setPosts(response.data)
+      })
   }
 
   useEffect(() => {
-
     if (!serverPosts) {
       load()
     }
   }, [])
 
-  if (!posts) {
+  if (!postsState) {
     return <MainLayout>
       <Container>
-      <p>Loading ...</p>
+        <p>Loading ...</p>
       </Container>
     </MainLayout>
   }
@@ -43,34 +44,34 @@ export default function Index({ posts: serverPosts }: PostsPageProps) {
   return (
     <MainLayout>
       <Container>
-      <Title className='mb-4'>POSTS LIST</Title>
-      <ul>
-        {posts.map(post => (
-          <Link
-            key={post.id} 
-            href={`/posts/[id]`} 
-            as={`/posts/${post.id}`}
-          >
-            <ListItem key={post.id}>
-              {post.title}
-            </ListItem>
-          </Link>
-        ))}
-      </ul>
-      <Button 
-        primary={true}
-        onClick={() => Router.push('/posts/new')} 
-      >
-      CREAT NEW POST
-      </Button>
+        <Title className='mb-4'>POSTS LIST</Title>
+        <ul>
+          {postsState.map(post => (
+            <Link
+              key={post.id}
+              href={`/posts/[id]`}
+              as={`/posts/${post.id}`}
+            >
+              <ListItem key={post.id}>
+                {post.title}
+              </ListItem>
+            </Link>
+          ))}
+        </ul>
+        <Button
+          primary={true}
+          onClick={() => Router.push('/posts/new')}
+        >
+          CREAT NEW POST
+        </Button>
       </Container>
     </MainLayout>
   )
 }
 
-Index.getInitialProps = async ({req}: NextPageContext) => {
+Index.getInitialProps = async ({ req }: NextPageContext) => {
   if (!req) {
-    return {posts: null}
+    return { posts: null }
   }
 
   const posts: MyPost[] = (await postsApi.getPosts()).data
@@ -78,3 +79,5 @@ Index.getInitialProps = async ({req}: NextPageContext) => {
     posts
   }
 }
+
+export default Index

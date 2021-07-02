@@ -8,6 +8,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     "plugin:prettier/recommended",
+    'prettier/@typescript-eslint',
     "prettier",
     "prettier/react"
   ],
@@ -23,8 +24,6 @@ module.exports = {
       "prettier"
     ],
     rules: {
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/ban-types": "off"
     },
     settings: {
       react: {

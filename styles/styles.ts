@@ -71,7 +71,6 @@ export const ListItem = styled.li`
     color: #e6e6e6;
     background-color: #333333;
   }
-  
 `;
 
 
@@ -81,6 +80,4 @@ export const DescriptionBox = styled.p`
   width: 600px;
   padding: 10px 20px;
   margin-bottom: 10px;
-  
-  
 `;
